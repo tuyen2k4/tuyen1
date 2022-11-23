@@ -1,32 +1,14 @@
-create table NhanVien(
-	tenNV nvarchar(255) not null,
-	ngaysinh date not null,
-	dienthoai varchar(15) primary key,
-	diachi ntext not null,
-	bangcap nvarchar(20) not null,
-	chucvu nvarchar(25) not null,
-	mucluong decimal(12,4) not null check(mucluong >=0)
-);
+﻿insert into Customer(CustomerId ,Name,City,Country,Phone,Email)
+values('123890',N'Cristiano Ronaldo',N'Funchal',N'Bồ Đào Nha',N'789456123',N'ronadol@gmail.com'),
+       ('123891',N'Hà Hữu Hoàng',N'Hanoi',N'Viet Nam',N'889456124',N'hahoang@gmail.com');
+select * from Customer;
 
-create table ThietBi(
-	soluong int not null check(soluong >0),
-	tenTB nvarchar not null,
-	maTB varchar(20) primary key
-);
+insert into CustomerAccount(AccountNumber,CustomerId,Balnance,MinAccount)
+values('70006','123890','900000','800000'),
+      ('80006','123891','800000','700000');
+select * from CustomerAccount;
 
-create table BoPhan(
-	bophan nvarchar(25) not null,
-	maBP varchar(20) primary key
-);
-
-create table NhanVien_ThietBi(
-	sodienthoai varchar(15) not null foreign key references NhanVien(dienthoai),
-	thietbi varchar(20) not null foreign key references ThietBi(maTB)
-);
-
-
---Delete Table:
---drop table NhanVien;
---drop table ThietBi;
---drop table BoPhan;
---drop table NhanVien_ThietBi;
+insert into CustomerTransaction(TransactionId,AccountNumber,TransactionDate, Amount, DepositorWithdraw)
+values('12345','70006','2022/1/10','20000','1'),
+      ('12346','80006','2022/2/10','30000','1');
+select * from CustomerTransaction;
